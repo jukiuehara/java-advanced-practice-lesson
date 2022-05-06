@@ -37,19 +37,31 @@ a.button {
 
   <h2>登録結果</h2>
 
+
   <div class="result">
     <h3>実行結果</h3>
-    <p><%=result%></p>
+    <p><%=%></p>
   </div>
-
   <p>
 
     <span>現在の登録ユーザー</span><br>
 
     <%
+               	String userId = request.getParameter("userId");
+            	String userName = request.getParameter("userName");
+            	String ag = request.getParameter("age");
+            	int age = Integer.parseInt(ag);
+            	User user = new User(userId,userName,age); 
+            	
+            	User[] users = new User[5];
+            	
+
+    
         // 現在のユーザー情報を表示
         for (User tempUser : users) {
             if (tempUser != null) {
+            	users.user(user);
+
                 // ユーザー情報を取得
                 // todo:
                 // 現在は変数のみ定義している。
@@ -57,7 +69,7 @@ a.button {
                 String msg = "";
 
                 // ユーザー情報表示
-                out.println(msg);
+                 out.println(user.returnUserInfo());
                 out.println("<br>");
             }
         }
