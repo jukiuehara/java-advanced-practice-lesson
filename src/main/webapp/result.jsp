@@ -3,7 +3,40 @@
   pageEncoding="UTF-8"%>
 <%
   //必要な処理を記述してください。
+                request.setCharacterEncoding("UTF-8");
+               	String userId = request.getParameter("userId");
+            	String userName = request.getParameter("userName");
+            	String ag = request.getParameter("age");
+            	if(ag.equals("")){
+            		ag="0";
+            	}
+            	int age = Integer.parseInt(ag); 
+            	User user = new User(userId,userName,age);  	
 
+            	User[] users = (User[])session.getAttribute("users");
+            	if(users==null){
+            	 users = new User[5];
+            	}
+            	String result = "これ以上ユーザーを登録できません";
+            	
+            	for(int count = 0; count<users.length; count++){
+            		if(users[count] == null){
+            			users[count]=user;
+            			
+            			result = "ユーザーを登録しました";
+            			break;
+            		}
+            		
+            	}
+            	session.setAttribute("users",users);
+            	
+            	
+
+            	String btn = request.getParameter("btn");
+            	if (btn != null && btn.equals("reset")) {
+            	// リセットボタンが押された場合、セッションを破棄
+            	session.invalidate();
+            	}
 %>
 <!DOCTYPE html>
 <html>
@@ -40,37 +73,35 @@ a.button {
 
   <div class="result">
     <h3>実行結果</h3>
-    <p><%=%></p>
+    <p><%=result%></p>
   </div>
   <p>
 
     <span>現在の登録ユーザー</span><br>
 
     <%
-               	String userId = request.getParameter("userId");
-            	String userName = request.getParameter("userName");
-            	String ag = request.getParameter("age");
-            	int age = Integer.parseInt(ag);
-            	User user = new User(userId,userName,age); 
-            	
-            	User[] users = new User[5];
+
+
+
             	
 
     
         // 現在のユーザー情報を表示
         for (User tempUser : users) {
             if (tempUser != null) {
-            	users.user(user);
+    
 
                 // ユーザー情報を取得
                 // todo:
                 // 現在は変数のみ定義している。
                 // Userクラスの情報取得用メソッドを呼んだ値をセットするように修正。
-                String msg = "";
+                user = tempUser;
+                String msg = user.returnUserInfo();
 
                 // ユーザー情報表示
-                 out.println(user.returnUserInfo());
+                 out.println(msg);
                 out.println("<br>");
+
             }
         }
     %>
