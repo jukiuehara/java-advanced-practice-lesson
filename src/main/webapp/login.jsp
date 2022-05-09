@@ -37,12 +37,13 @@
     <div>PASS: <input type="password" name="password"></div>
     <div><button type="submit">送信</button></div>
     </c:when>
-    <c:when test="${!(id eq technocore) && !(password eq techno-pass)}">
+<!-- <c:when test="${!(id eq technocore) && !(password eq techno-pass)}">
      <h3>passwordまたはIDが間違えています</h3>
      <div>ID: <input type="text" name="id"></div>
     <div>PASS: <input type="password" name="password"></div>
     <div><button type="submit">送信</button></div>
     </c:when>
+    -->
     <c:otherwise>
      <div>ID: <input type="text" name="id"></div>
     <div>PASS: <input type="password" name="password"></div>
