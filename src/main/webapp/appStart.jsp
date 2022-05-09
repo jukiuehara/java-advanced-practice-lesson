@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Java応用_演習問題1</title>
+<title>Java応用_演習問題2</title>
 <style>
 body {
   border: solid 2px #000080;
