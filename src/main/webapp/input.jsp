@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%
 // 必要な処理を記述してください。
+String btn = request.getParameter("btn");
+if (btn != null && btn.equals("reset")) {
+	session.invalidate();
+}
 %>
 <!DOCTYPE html>
 <html>

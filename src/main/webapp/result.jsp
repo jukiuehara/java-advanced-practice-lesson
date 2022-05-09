@@ -30,10 +30,7 @@ for (int count = 0; count < users.length; count++) {
 }
 session.setAttribute("users", users);
 
-String btn = request.getParameter("btn");
-if (btn != null && btn.equals("reset")) {
-	session.invalidate();
-}
+
 %>
 <!DOCTYPE html>
 <html>
