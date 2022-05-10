@@ -40,9 +40,13 @@ public class InputServlet extends HttpServlet {
             throws ServletException, IOException {
         
     	// ここに必要な処理を記述してください。
-
-
+        request.setCharacterEncoding("UTF-8");
+        String name = request.getParameter("name");
+        String language = request.getParameter("language");
+        String birthPlace = request.getParameter("birthPlace");
         // 結果画面へ
+        String info = "";
+        
         request.getRequestDispatcher("result.jsp").forward(request, response);
     }
 }
