@@ -38,11 +38,14 @@ body {
   </div>
 </c:if>
 
-
   <form action="StartAppServlet" method="post">
     <label>ユーザ名：</label>
     <input type="text" name="name">
     <br>
+ <input type="radio" name="1" value="apri">アプリ
+ <input type="radio" name="1"value="torannpu">トランプ
+ <input type="radio" name="1"value="game">ゲーム
+	<br>
     <button type="submit">実行</button>
   </form>
 </body>
