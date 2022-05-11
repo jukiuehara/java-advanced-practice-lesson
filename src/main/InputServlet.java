@@ -46,6 +46,9 @@ public class InputServlet extends HttpServlet {
         String birthPlace = request.getParameter("birthPlace");
         // 結果画面へ
         String info = "";
+        Human j = new Japanese;
+        Human A = new American;
+        
         
         request.getRequestDispatcher("result.jsp").forward(request, response);
     }
