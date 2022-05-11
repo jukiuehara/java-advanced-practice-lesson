@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Java応用_演習問題2</title>
+<title>Java応用_演習問題4</title>
 <style>
 body {
   border: solid 2px #000080;
@@ -42,7 +42,9 @@ body {
     <br>
  アプリ：
  <input type="radio" name="1"value="トランプ"checked>トランプ
- <input type="radio" name="1"value="ゲーム">ゲーム
+ <input type="radio" name="1"value="ダーツ">ダーツ
+ <input type="radio" name="1"value="時計">時計
+ <input type="radio" name="1"value="その他">その他
 	<br>
     <button type="submit">実行</button>
   </form>

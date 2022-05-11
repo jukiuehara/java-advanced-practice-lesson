@@ -1,15 +1,20 @@
 package app;
-	public class GameApp{
+	public abstract class GameApp implements  App{
 	public String item;
 	public GameApp() {
-
-		this.item = "何か";
+		super();
+		this.item = "";
 	}
 	public GameApp(String item) {
 		this.item=item;
 	}
 	public String start(String name) {
-		return (name+"さんと"+item+"でゲームを開始します。");
+		return (name+"さんと"+item+"でゲームを開始します。"+play());
 
+	}
+	
+	public String play() {
+		String play = "";
+		return play;
 	}
 }
