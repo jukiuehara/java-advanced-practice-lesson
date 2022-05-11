@@ -51,17 +51,26 @@ public class StartAppServlet extends HttpServlet {
 		String result = "";
 
 		if (name != null && !name.isEmpty()) {
-			// このif分の中で、GameAppクラスのstartメソッドを呼び出し、
-			// 戻り値をresultに代入してください。
-			if (app.equals("トランプ")) {
-				CardGameApp c = new CardGameApp(app);
-			} else if (app.equals("ダーツ")) {
-				DartGameApp c = new DartGameApp(app);
-			} else if (app.equals("時計")) {
+			switch (app) {
+			case "トランプ":
+				CardGameApp a = new CardGameApp(app);
+				result = a.start(name);
+				break;
+			case "ダーツ":
+				DartGameApp b = new DartGameApp(app);
+				result = b.start(name);
+				break;
+			case "時計":
 				ClockApp c = new ClockApp();
+				result = c.start(name);
+				break;
+			case "その他":
+				result = "アプリの実行に失敗しました";
+				break;
+
 			}
-			result = c.start(name);
 		}
+
 		request.setAttribute("result", result);
 		request.getRequestDispatcher("/appStart.jsp").forward(request, response);
 	}
