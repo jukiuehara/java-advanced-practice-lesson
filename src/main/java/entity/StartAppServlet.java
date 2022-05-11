@@ -58,9 +58,7 @@ public class StartAppServlet extends HttpServlet {
 			} else if (app.equals("ダーツ")) {
 				DartGameApp c = new DartGameApp(app);
 			} else if (app.equals("時計")) {
-				ClockApp c = new ClockApp(app);
-			}else{
-				
+				ClockApp c = new ClockApp();
 			}
 			result = c.start(name);
 		}
