@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import app.CardGameApp;
 import app.GameApp;
 
 /**
@@ -41,6 +42,7 @@ public class StartAppServlet extends HttpServlet {
 		// TODO Auto-generated method stub
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
+        String app = request.getParameter("1");
         
         
         
@@ -50,8 +52,15 @@ public class StartAppServlet extends HttpServlet {
         if (name != null && !name.isEmpty()) {
         	// このif分の中で、GameAppクラスのstartメソッドを呼び出し、
         	// 戻り値をresultに代入してください。
-        	GameApp gameApp = new GameApp("何か");
-        	result = gameApp.start(name);
+        	if(app.equals("ゲーム")) {
+        	GameApp gameApp = new GameApp();
+        	result = gameApp.start(name);        		
+        	}else if(app.equals("トランプ")) {
+            	CardGameApp gameApp = new CardGameApp(app);
+            	result = gameApp.start(name); 
+        	}
+
+
         }
         request.setAttribute("result", result);
         request.getRequestDispatcher("/appStart.jsp").forward(request, response);
