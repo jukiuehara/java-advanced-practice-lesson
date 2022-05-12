@@ -48,7 +48,7 @@ public class InputServlet extends HttpServlet {
         String info = "";
         Japanese j = new Japanese();
         American A = new American();
-        switch("simple")
+        switch(birthPlace);
         case:"japan"
         j.japanese();
         break;
