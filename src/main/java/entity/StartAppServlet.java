@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import app.CardGameApp;
 import app.ClockApp;
 import app.DartGameApp;
+import app.GameApp;
 
 /**
  * Servlet implementation class StartAppServlet
@@ -46,18 +47,18 @@ public class StartAppServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
-		String app = request.getParameter("1");
+		String game = request.getParameter("1");
 
 		String result = "";
 
 		if (name != null && !name.isEmpty()) {
-			switch (app) {
+			switch (game) {
 			case "トランプ":
-				CardGameApp a = new CardGameApp(app);
+				GameApp g = new CardGameApp(game);
 				result = a.start(name);
 				break;
 			case "ダーツ":
-				DartGameApp b = new DartGameApp(app);
+				GameApp g = new DartGameApp(game);
 				result = b.start(name);
 				break;
 			case "時計":

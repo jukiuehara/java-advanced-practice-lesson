@@ -1,6 +1,7 @@
 package app;
 	public abstract class GameApp implements  App{
-	public String item;
+	private String item;
+	private int playtime;
 	public GameApp() {
 		super();
 		this.item = "";
@@ -13,8 +14,23 @@ package app;
 
 	}
 	
-	public String play() {
+	protected String play() {
 		String play = "";
 		return play;
 	}
+	
+	public String getitem(String item) {
+		return this.item;
+	}
+	public int getplaytime(int playtime) {
+		return this.playtime;
+	}
+	
+	public void setitem(String item) {
+		this.item = item;
+	}
+	public void setplaytime(int playtime) {
+		this.playtime = playtime;
+	}
+
 }
