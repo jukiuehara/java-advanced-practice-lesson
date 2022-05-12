@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import app.App;
 import app.CardGameApp;
 import app.ClockApp;
 import app.DartGameApp;
@@ -50,15 +51,16 @@ public class StartAppServlet extends HttpServlet {
 		String game = request.getParameter("1");
 
 		String result = "";
-
+		App app = new App();
+		GameApp g = new GameApp();
 		if (name != null && !name.isEmpty()) {
 			switch (game) {
 			case "トランプ":
-				GameApp g = new CardGameApp(game);
+				g = new CardGameApp(game);
 				result = a.start(name);
 				break;
 			case "ダーツ":
-				GameApp g = new DartGameApp(game);
+				g = new DartGameApp(game);
 				result = b.start(name);
 				break;
 			case "時計":
