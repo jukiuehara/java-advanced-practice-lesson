@@ -18,17 +18,11 @@ package app;
 		String play = "";
 		return play;
 	}
-	
-	public String getitem(String item) {
-		return this.item;
+
+	public int getplaytime() {
+		return  this.playtime;
 	}
-	public int getplaytime(int playtime) {
-		return this.playtime;
-	}
-	
-	public void setitem(String item) {
-		this.item = item;
-	}
+
 	public void setplaytime(int playtime) {
 		this.playtime = playtime;
 	}

@@ -12,6 +12,7 @@ import app.App;
 import app.CardGameApp;
 import app.ClockApp;
 import app.DartGameApp;
+import app.GameApp;
 
 /**
  * Servlet implementation class StartAppServlet
@@ -68,10 +69,19 @@ public class StartAppServlet extends HttpServlet {
 				break;
 			}
 		}
-		
-		result = app.start(name);
+		if(app instanceof GameApp) {
+			GameApp gameApp = (GameApp)app;
+			int time = gameApp.getplaytime();
+			String playtime = "実行時間："+time;
+			request.setAttribute("playtime",playtime );
+		}
+		if(!(name.equals(""))) {
+		result = app.start(name);			
+		}
+
 
 		request.setAttribute("result", result);
+
 		request.getRequestDispatcher("/appStart.jsp").forward(request, response);
 	}
 

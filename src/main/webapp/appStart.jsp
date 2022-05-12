@@ -33,6 +33,8 @@ body {
   <div class="result">
     <h3>アプリの実行結果</h3>
     <p>${requestScope.result}</p>
+    <p>${requestScope.playtime}</p>
+
   </div>
 </c:if>
 
