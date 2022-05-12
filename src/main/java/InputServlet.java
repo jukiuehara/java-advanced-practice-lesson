@@ -12,50 +12,52 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/inputServlet")
 public class InputServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InputServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public InputServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     *      response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        response.getWriter().append("Served at: ").append(request.getContextPath());
-    }
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-     *      response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-    	// ここに必要な処理を記述してください。
-        request.setCharacterEncoding("UTF-8");
-        String name = request.getParameter("name");
-        String language = request.getParameter("language");
-        String birthPlace = request.getParameter("birthPlace");
-        // 結果画面へ
-        String info = "";
-        Japanese j = new Japanese();
-        American A = new American();
-        switch(birthPlace);
-        case:"japan"
-        j.japanese();
-        break;
-        
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        
-        
-        request.getRequestDispatcher("result.jsp").forward(request, response);
-    }
+		// ここに必要な処理を記述してください。
+		request.setCharacterEncoding("UTF-8");
+		String name = request.getParameter("name");
+		String language = request.getParameter("language");
+		String birthPlace = request.getParameter("birthPlace");
+		// 結果画面へ
+		String info = "";
+
+		switch (birthPlace) {
+		case "japan":
+			Japanese j = new Japanese();
+			info = j.returnHumanInfo();
+			break;
+		case "america":
+			American a = new American();
+			info = a.returnHumanInfo();
+			break;
+		}
+
+		request.getRequestDispatcher("result.jsp").forward(request, response);
+	}
 }
