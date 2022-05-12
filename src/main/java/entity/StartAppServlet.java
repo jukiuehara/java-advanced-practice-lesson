@@ -12,7 +12,6 @@ import app.App;
 import app.CardGameApp;
 import app.ClockApp;
 import app.DartGameApp;
-import app.GameApp;
 
 /**
  * Servlet implementation class StartAppServlet
@@ -51,28 +50,26 @@ public class StartAppServlet extends HttpServlet {
 		String game = request.getParameter("1");
 
 		String result = "";
-		App app = new App();
-		GameApp g = new GameApp();
+		App app = new CardGameApp();
+		
 		if (name != null && !name.isEmpty()) {
 			switch (game) {
 			case "トランプ":
-				g = new CardGameApp(game);
-				result = a.start(name);
+				app = new CardGameApp(game);
 				break;
 			case "ダーツ":
-				g = new DartGameApp(game);
-				result = b.start(name);
+				app = new DartGameApp(game);
 				break;
 			case "時計":
-				ClockApp c = new ClockApp();
-				result = c.start(name);
+				app = new ClockApp();
 				break;
 			case "その他":
 				result = "アプリの実行に失敗しました";
 				break;
-
 			}
 		}
+		
+		result = app.start(name);
 
 		request.setAttribute("result", result);
 		request.getRequestDispatcher("/appStart.jsp").forward(request, response);
