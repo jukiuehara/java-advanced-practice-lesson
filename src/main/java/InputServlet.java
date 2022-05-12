@@ -44,20 +44,44 @@ public class InputServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String language = request.getParameter("language");
 		String birthPlace = request.getParameter("birthPlace");
+		String btn = request.getParameter("btn");
 		// 結果画面へ
 		String info = "";
-
+		boolean isSimple = false;
+		if(btn.equals("simple")) {
+			isSimple = true;
+		}else if(btn.equals("details")) {
+			isSimple = false;	
+		}
+		Human h = new Human();
+		if(isSimple) {
 		switch (birthPlace) {
 		case "japan":
-			Japanese j = new Japanese();
-			info = j.returnHumanInfo();
+			h = new Japanese();
 			break;
 		case "america":
-			American a = new American();
-			info = a.returnHumanInfo();
+			h = new American();
 			break;
+		default:
+			h = new Human(name,language);
+	    break;
+		}			
+		}else if(!(isSimple)) {
+			switch (birthPlace) {
+			case "japan":
+				h = new Japanese(name,language);
+				break;
+			case "america":
+				h = new American(name,language);
+				break;
+			default:
+				h = new Human(name,language);
+		    break;
+			}	
 		}
+				info = h.returnHumanInfo();
 
+		request.setAttribute("info", info);
 		request.getRequestDispatcher("result.jsp").forward(request, response);
 	}
 }

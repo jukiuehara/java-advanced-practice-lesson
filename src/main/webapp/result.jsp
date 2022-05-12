@@ -32,7 +32,7 @@ a.button {
 
   <h2>登録結果</h2>
 
-  <p>${info}</p>
+  <p>${requestScope.info}</p>
 
   <a href="input.jsp">戻る</a>
 
