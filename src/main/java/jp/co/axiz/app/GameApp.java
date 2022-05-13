@@ -1,4 +1,4 @@
-package app;
+package jp.co.axiz.app;
 	public abstract class GameApp implements  App{
 	private String item;
 	private int playtime;
