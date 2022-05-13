@@ -47,14 +47,17 @@ public class ImportServlet extends HttpServlet {
          */
 
         // todo:入力値取得
-
+    	String data = request.getParameter("data");
         // 取り込んだ内容を保持するための変数(オブジェクト)
         Animal animal = null;
-
         // todo:
         // オブジェクトを作成し、上記の変数にセット
         // 選択したデータに応じて、作成するオブジェクトが異なる
-
+        if(data.equals("cat")) {
+        	animal = new Cat();
+        }else if(data.equals("rabbit")) {
+            animal = new Rabbit();        	
+        }
         // 結果画面に表示するメッセージ用の変数
         String result = "";
 
@@ -80,11 +83,11 @@ public class ImportServlet extends HttpServlet {
             // 読み込みを繰り返す
             while (text != null) {
                 // todo:行数加算
-
+            	count++;
                 // todo:
                 // 変数animalのフィールドに読み込んだ内容をセット
                 // 現在の行数(count)に応じて、セットするフィールドが異なる
-
+            	
                 // ファイル内の次の1行を読み込み
                 text = br.readLine();
             }

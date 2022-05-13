@@ -1,3 +1,4 @@
+package jp.co.axiz.app;
 
 /**
  * 動物を表す抽象クラス
