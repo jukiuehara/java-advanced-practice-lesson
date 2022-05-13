@@ -1,4 +1,4 @@
-package app;
+package jp.co.axiz.app;
 
 public class DartGameApp extends GameApp {
 	public DartGameApp(String item) {
