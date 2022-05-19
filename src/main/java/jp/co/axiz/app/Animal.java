@@ -7,7 +7,7 @@ public abstract class Animal {
 
     public String name; // 名前
     public int age; // 年齢
-
+    public String people;
     public Animal() {
 
     }

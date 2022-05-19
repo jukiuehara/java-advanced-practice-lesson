@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jp.co.axiz.app.Animal;
+import jp.co.axiz.app.Cat;
+import jp.co.axiz.app.Rabbit;
+
 /**
  * Servlet implementation class StartAppServlet
  */
@@ -80,22 +84,32 @@ public class ImportServlet extends HttpServlet {
 
             // ファイル内の中身を1行ずつ読み込み、
             // 読み込み内容が無くなるまで(textの値がnullになるまで)
-            // 読み込みを繰り返す
+            // 読み込みを繰り返す	
+            String name = null;
+            String age = null;
             while (text != null) {
                 // todo:行数加算
             	count++;
                 // todo:
                 // 変数animalのフィールドに読み込んだ内容をセット
                 // 現在の行数(count)に応じて、セットするフィールドが異なる
-            	
+            	if(count==1) {
+            		name = text;
+            	}else if (count == 2) {
+            		age = text;
+            	}
                 // ファイル内の次の1行を読み込み
                 text = br.readLine();
             }
+            int ageage = Integer.parseInt(age);
 
+             animal.name = name; 
+             animal.age =ageage; 
             // todo:
             // 変数animalのintroduceメソッドで表示する内容を取得し、
             // 変数resultにセット
-
+            result =animal.introduce();
+            request.setAttribute("result",result);
 
             // ファイルの読み込みに失敗した場合、例外が発生するので、
             // 「IOException」という型でcatchする
@@ -103,7 +117,8 @@ public class ImportServlet extends HttpServlet {
             // todo:
             // ファイルの読み込みに失敗した時のメッセージを
             // 変数resultにセット
-
+        	result = "ファイルの読み込みに失敗しました。対象のファイルの存在や文字コードを確認してください。";
+        	request.setAttribute("result",result);
         } finally {
             // 読み込んだファイルを閉じる
             // (finally句でこの処理を行うのは、
