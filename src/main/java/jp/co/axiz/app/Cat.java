@@ -11,7 +11,7 @@ public class Cat extends Animal {
 	}
 	
 	public String introduceAge() {
-	String people=null;
+
 	
     switch (age) {
     case 0:

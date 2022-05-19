@@ -11,7 +11,7 @@ public class Rabbit extends Animal {
 	}
 	
 	public String introduceAge() {
-		String people=null;
+
         switch (age) {
         case 0:
             people = "0～10代中盤";
