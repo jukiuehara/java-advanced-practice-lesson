@@ -39,11 +39,32 @@ public class InputServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	
+    	request.setCharacterEncoding("UTF-8");
     	// ここに必要な処理を記述してください。
     	
+    	String carName = request.getParameter("carName");
+    	String bodyColor = request.getParameter("bodyColor");
+    	String maxSpeed = request.getParameter("maxSpeed");
+   	
+    	if(Utility.isNullOrEmpty(carName)||Utility.isNullOrEmpty(bodyColor)||Utility.isNullOrEmpty(maxSpeed)) {
+    		String result = "未入力の項目があります。";
+    		request.setAttribute("result",result);
+    		request.getRequestDispatcher("input.jsp").forward(request, response);
+    	}
+    	int max = 0;
+    	int speed = 0;
+    	if(Utility.isNumber(maxSpeed)) {
+    		max = Integer.parseInt(maxSpeed);
+    	}
+    	Car car = new Car();
+    	car.setCarName(carName);
+    	car.setBodyColor(bodyColor);
+    	car.setMaxSpeed(max);
+    	car.setSpeed(speed);
+    	    request.setAttribute("latestCar",car);
+    		request.getRequestDispatcher("update.jsp").forward(request, response);	
 
         // 結果画面へ遷移
-        request.getRequestDispatcher("update.jsp").forward(request, response);
+            
     }
 }
